@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Friend's Name] Birthday Wishes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Happy Birthday, [Friend's Name]!</h1>
+        <img src="banner.jpg" alt="Birthday Banner">
+    </header>
+
+    <section id="welcome">
+        <p>Welcome to [Friend's Name]'s birthday wishes website! Leave a special message below to celebrate!</p>
+    </section>
+
+    <section id="messages">
+        <h2>Birthday Wishes</h2>
+        <form id="wishForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="message" placeholder="Write your birthday wish..." required></textarea>
+            <button type="submit">Send Wish</button>
+        </form>
+
+        <div id="wishes">
+            <!-- Submitted wishes will be displayed here -->
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Photo Gallery</h2>
+        <div class="gallery-grid">
+            <img src="image1.jpg" alt="Memory 1">
+            <img src="image2.jpg" alt="Memory 2">
+            <img src="image3.jpg" alt="Memory 3">
+        </div>
+    </section>
+
+    <footer>
+        <p>Created with love for [Friend's Name] - Happy Birthday!</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>2. CSS for Styling (styles.css)body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    text-align: center;
+    background-color: #8b008b;
+    color: white;
+    padding: 20px;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+}
+
+#messages, #gallery {
+    margin: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+form input, form textarea {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    text-align: center;
+    background-color: #8b008b;
+    color: white;
+    padding: 10px;
+}3. JavaScript for Submitting Wishes (scripts.js)document.getElementById('wishForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const name = event.target.name.value;
+    const message = event.target.message.value;
+    
+    const wishContainer = document.getElementById('wishes');
+    const newWish = document.createElement('div');
+    
+    newWish.innerHTML = `<strong>${name}:</strong> <p>${message}</p>`;
+    wishContainer.appendChild(newWish);
+    
+    event.target.reset();
+});
